@@ -1,8 +1,10 @@
 <h1>Rock, Paper, Scissors detector</h1>
-#if($checkWinner)
+#if($whoWon)
 <div id="appendResults">
     $results1
-    $results2
 </div>
 #else
+<div id="appendResults">
+    $results2
+</div>
 #end

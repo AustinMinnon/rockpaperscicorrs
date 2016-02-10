@@ -15,41 +15,62 @@ public class RockPaperTest extends FluentTest {
       return webDriver;
   }
 
-  // @ClassRule
-  // public static ServerRule server = new ServerRule();
-  //
-  // @Test
-  // public void rootTest() {
-  //     goTo("http://localhost:4567/");
-  //     assertThat(pageSource()).contains("Rock, Paper, Scissors");
-  // }
-  // @Test
-  // public void rockPaperScissors() {
-  //   goTo("http://localhost:4567");
-  //   fill("#user1Input").with("rock");
-  //   fill("#user2Input").with("paper");
-  //   submit(".btn");
-  //   assertThat(pageSource()).contains("player2 wins");
-  // }
+  @ClassRule
+  public static ServerRule server = new ServerRule();
 
-//   @Test
-//   public void checkWinner_tieRockRock_tie() {
-//   RockPaper testRockPaper = new RockPaper();
-//   assertEquals("it's a tie", testRockPaper.checkWinner("Rock", "Rock"));
-// }
+  @Test
+  public void rootTest() {
+      goTo("http://localhost:4567/");
+      assertThat(pageSource()).contains("Rock, Paper, Scissors");
+  }
+  @Test
+  public void rockPaperScissors() {
+
+    goTo("http://localhost:4567/");
+    click("option[id=user1Input]",withText("Rock"));
+    click("option[id=user2Input]",withText("Paper"));
+    submit(".btn");
+    assertThat(pageSource()).contains("Player2 Wins");
+  }
+
+  @Test
+  public void checkWinner_tieRockRock_tie() {
+  RockPaper testRockPaper = new RockPaper();
+  assertEquals(false, testRockPaper.checkWinner("rock", "rock"));
+}
   @Test
   public void checkWinner_rockBeatsScissors_rockwins() {
     RockPaper testRockPaper = new RockPaper();
     assertEquals(true, testRockPaper.checkWinner("rock", "scissors"));
   }
+
   @Test
   public void checkWinner_ScissorsBeatsPaper_scissorswins() {
     RockPaper testRockPaper = new RockPaper();
     assertEquals(true, testRockPaper.checkWinner("scissors", "paper"));
   }
+
   @Test
   public void checkWinner_PaperBeatsRock_rockwins() {
     RockPaper testRockPaper = new RockPaper();
     assertEquals(true, testRockPaper.checkWinner("paper", "rock"));
+  }
+
+  @Test
+  public void whoWon_Player1beatsPlayer2_Player1Wins() {
+    RockPaper testRockPaper = new RockPaper();
+    assertEquals("Player1 Wins", testRockPaper.whoWon("paper", "rock"));
+  }
+
+  @Test
+  public void whoWon_Player2beatsPlayer1_Player2Wins() {
+    RockPaper testRockPaper = new RockPaper();
+    assertEquals("Player2 Wins", testRockPaper.whoWon("rock", "paper"));
+  }
+
+  @Test
+  public void whoWon_Player1EqualsPlayer2_tie() {
+    RockPaper testRockPaper = new RockPaper();
+    assertEquals("Tie, play again.", testRockPaper.whoWon("rock", "rock"));
   }
 }
