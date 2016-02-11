@@ -27,8 +27,8 @@ public class RockPaperTest extends FluentTest {
   public void rockPaperScissors() {
 
     goTo("http://localhost:4567/");
-    click("option[id=user1Input]",withText("Rock"));
-    click("option[id=user2Input]",withText("Paper"));
+    click("option",withName("rock"));
+    click("option",withName("paper"));
     submit(".btn");
     assertThat(pageSource()).contains("Player2 Wins");
   }

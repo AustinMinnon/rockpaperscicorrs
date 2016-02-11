@@ -1,10 +1,24 @@
-<h1>Rock, Paper, Scissors detector</h1>
-#if($whoWon)
-<div id="appendResults">
-    $results1
+<div class="jumbotron">
+  <h1>Game Result<h1>
+</div>
+
+<!-- #if($whoWon) -->
+<!-- <div id="appendResults">
+    $winner
 </div>
 #else
 <div id="appendResults">
     $results2
 </div>
 #end
+
+$user -->
+
+<div id="appendResults">
+
+$winner
+
+</div>
+<form action="/" method="get">
+  <button type="submit" class="btn" >Play Again</button>
+</form>

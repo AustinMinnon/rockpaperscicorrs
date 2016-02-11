@@ -1,0 +1,25 @@
+<div class="jumbotron">
+  <h1>Play a Game of Rock, Paper, Scissors!<h1>
+  <h3>Select your signs, then hit submit. No peeking!</h3>
+</div>
+<form action="/detector" method="get">
+  <div class="form-group">
+    <label for="user1Input">Signs</label>
+    <select name="user1Input">
+      <option disabled selected> -- please select a sign -- </option>
+      <option name="rock" value="rock">Rock</option>
+      <option name="paper" value="paper">Paper</option>
+      <option name="scissors" value="scissors">Scissors</option>
+    </select>
+  </div>
+    <div class="form-group">
+      <label for="user2Input">Signs</label>
+      <select name="user2Input">
+        <option disabled selected> -- please select a sign -- </option>
+        <option name="rock" value="rock">Rock</option>
+        <option name="paper" value="paper">Paper</option>
+        <option name="scissors" value="scissors">Scissors</option>
+      </select>
+    </div>
+  <button class="btn" type="submit">Go!</button>
+</form>

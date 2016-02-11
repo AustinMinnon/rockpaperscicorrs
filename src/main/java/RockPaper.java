@@ -12,13 +12,7 @@ public class RockPaper {
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/player1.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    get("/player2", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/player2.vtl");
+      model.put("template", "templates/input.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -31,8 +25,8 @@ public class RockPaper {
       String winner = whoWon(user1Input, user2Input);
 
       model.put("winner", winner);
-      model.put("user1Input", request.queryParams("results1"));
-      model.put("user2Input", request.queryParams("results2"));
+      // model.put("user1Input", request.queryParams("results1"));
+      // model.put("user2Input", request.queryParams("results2"));
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }
